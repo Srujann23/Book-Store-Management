@@ -1,4 +1,8 @@
 export const PORT = 5555;
 
-export const mongoDBURL =
-    'mongodb+srv://root:root@books-store.zg0suhn.mongodb.net/books-collection?retryWrites=true&w=majority&appName=Books-Store'
+require('dotenv').config();
+
+const mongoose = require('mongoose');
+const uri = process.env.MONGODB_URI;
+
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
