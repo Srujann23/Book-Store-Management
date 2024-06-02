@@ -1,5 +1,5 @@
 import express, { request, response } from "express";
-import { PORT, mongoDBURL } from "./config.js";
+import { PORT, MONGODB_URI } from "./config.js";
 import mongoose from "mongoose";
 import { Book } from './models/bookmodel.js';
 import booksRoute from './routes/booksRoute.js';
@@ -30,7 +30,7 @@ app.use(cors());
 app.use('/books', booksRoute);
 
 mongoose
-    .connect(mongoDBURL)
+    .connect(MONGODB_URI)
     .then(() => {
         console.log('Connected to database');
         app.listen(PORT, () => {
@@ -38,5 +38,7 @@ mongoose
         });
     })
     .catch((error) => {
+        // console.log(MONGODB_URI);
+        console.log('Connection failed!');
         console.log(error);
     });
