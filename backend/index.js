@@ -4,12 +4,14 @@ import mongoose from "mongoose";
 import { Book } from './models/bookmodel.js';
 import booksRoute from './routes/booksRoute.js';
 import cors from 'cors';
-
+// const cors = require('cors');
 const app = express();
 
 //Middleware for parsing request body
 app.use(express.json());
-
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
 
 //Middleware for handling  CORS (Cross-Origin Resource Sharing) Policy
 
